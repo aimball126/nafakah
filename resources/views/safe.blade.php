@@ -1,0 +1,163 @@
+
+@extends('layouts.master')
+@section('css')
+<!--  Owl-carousel css-->
+<link href="{{URL::asset('assets/plugins/owl-carousel/owl.carousel.css')}}" rel="stylesheet" />
+<!-- Maps css -->
+<link href="{{URL::asset('assets/plugins/jqvmap/jqvmap.min.css')}}" rel="stylesheet">
+@endsection
+@section('page-header')
+<!-- breadcrumb -->
+<!-- /breadcrumb -->
+@endsection
+@section('content')
+<!-- row -->
+<div class="col-xl-12">
+    <div class="card">
+        <div class="card-header pb-0">
+            <div class="d-flex justify-content-between">
+                <h4 class="card-title mg-b-0">محفظة المعاملات</h4>
+                <i class="mdi mdi-dots-horizontal text-gray"></i>
+            </div>
+            <div class="mt-3">
+                <h5>إجمالي المبلغ في المحفظة: <span class="text-success">1000 دينار ليبي</span></h5>
+                <h6>تاريخ اليوم: <span class="text-muted">{{ date('d/m/Y') }}</span></h6>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="بحث عن المعاملات" aria-label="Search">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0 text-md-nowrap">
+                    <thead>
+                        <tr>
+                            <th>رقم المعاملة</th>
+                            <th>رقم الملف</th>
+                            <th>اسم المطلق</th>
+                            <th>اسم المطلقة</th>
+                            <th>قيمة النفقة</th>
+                            <th>تاريخ الدفع</th>
+                            <th>تاريخ الاستلام</th>
+                            <th>حالة الاستلام</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>001</td>
+                            <td>أحمد</td>
+                            <td>فاطمة</td>
+                            <td>300 دل</td>
+                            <td>01/01/2023</td>
+                            <td>01/02/2023</td>
+                            <td>
+                                <span class="badge badge-success">تم الاستلام</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>002</td>
+                            <td>محمد</td>
+                            <td>عائشة</td>
+                            <td>300 دل</td>
+                            <td>02/01/2023</td>
+                            <td></td>
+                            <td>
+                                <span class="badge badge-danger">لم يتم الاستلام</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-success">تم الاستلام</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>003</td>
+                            <td>علي</td>
+                            <td>سارة</td>
+                            <td>300 دل</td>
+                            <td>03/01/2023</td>
+                            <td>03/02/2023</td>
+                            <td>
+                                <span class="badge badge-success">تم الاستلام</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>004</td>
+                            <td>يوسف</td>
+                            <td>مريم</td>
+                            <td>300 دل</td>
+                            <td>04/01/2023</td>
+                            <td></td>
+                            <td>
+                                <span class="badge badge-danger">لم يتم الاستلام</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-success">تم الاستلام</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>005</td>
+                            <td>سالم</td>
+                            <td>ليلى</td>
+                            <td>300 دل</td>
+                            <td>05/01/2023</td>
+                            <td>05/02/2023</td>
+                            <td>
+                                <span class="badge badge-success">تم الاستلام</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <div class="mt-3">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#">التالي</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">السابق</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- End of Pagination -->
+        </div>
+    </div>
+</div>
+<!-- row closed -->
+<!-- Container closed -->
+@endsection
+@section('js')
+<!--Internal  Chart.bundle js -->
+<script src="{{URL::asset('assets/plugins/chart.js/Chart.bundle.min.js')}}"></script>
+<!-- Moment js -->
+<script src="{{URL::asset('assets/plugins/raphael/raphael.min.js')}}"></script>
+<!--Internal  Flot js-->
+<script src="{{URL::asset('assets/plugins/jquery.flot/jquery.flot.js')}}"></script>
+<script src="{{URL::asset('assets/plugins/jquery.flot/jquery.flot.pie.js')}}"></script>
+<script src="{{URL::asset('assets/plugins/jquery.flot/jquery.flot.resize.js')}}"></script>
+<script src="{{URL::asset('assets/plugins/jquery.flot/jquery.flot.categories.js')}}"></script>
+<script src="{{URL::asset('assets/js/dashboard.sampledata.js')}}"></script>
+<script src="{{URL::asset('assets/js/chart.flot.sampledata.js')}}"></script>
+<!--Internal Apexchart js-->
+<script src="{{URL::asset('assets/js/apexcharts.js')}}"></script>
+<!-- Internal Map -->
+<script src="{{URL::asset('assets/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+<script src="{{URL::asset('assets/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<script src="{{URL::asset('assets/js/modal-popup.js')}}"></script>
+<!--Internal  index js -->
+<script src="{{URL::asset('assets/js/index.js')}}"></script>
+<script src="{{URL::asset('assets/js/jquery.vmap.sampledata.js')}}"></script>
+@endsection
