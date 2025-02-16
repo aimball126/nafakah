@@ -1,7 +1,8 @@
 z<?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,14 +13,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\LandingPageController;
+
+Route::get('home', [LandingPageController::class, 'index']);
 
 Route::get('/', function () {
-    return view('index');
-});
+    return view('index'); // Home page
+});// Protect the home route
+
 // Route for the sign-in page
-Route::get('/signin', function () {
-    return view('signin');
-});
+Route::get('/signin', [UserController::class, 'create'])->name('signin');
+// Route for handling the sign-in form submission
+Route::post('/signin', [UserController::class, 'login'])->name('login');
+
+// Route for creating a user
+Route::get('/create-user', [UserController::class, 'create'])->name('create.user');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 // Route for the sign-in page
 Route::get('/editprofile', function () {
@@ -30,6 +39,9 @@ Route::get('/editprofile', function () {
 Route::get('/tables', function () {
     return view('table-basic');
 });
+
+Route::get('/create-user', [UserController::class, 'create'])->name('create.user');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 // Route for the sign-in page
 Route::get('/admins', function () {
@@ -45,3 +57,7 @@ Route::get('/safe', function () {
     return view('safe');
 });
 Route::get('/{page}', 'AdminController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

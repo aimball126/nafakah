@@ -28,18 +28,23 @@
 											<div class="main-signup-header">
 												<h2>مرحبًا بعودتك!</h2>
 												<h5 class="font-weight-semibold mb-4">يرجى تسجيل الدخول للمتابعة.</h5>
-												<form action="{{ url('/index') }}" method="GET"> <!-- Changed action to redirect to index -->
-													<div class="form-group">
-														<label>اسم المستخدم</label> <input class="form-control" placeholder="أدخل اسم المستخدم" type="text" name="username" required>
-													</div>
-													<div class="form-group">
-														<label>رقم الهاتف</label> <input class="form-control" placeholder="أدخل رقم الهاتف" type="text" name="phone" required>
-													</div>
-													<div class="form-group">
-														<label>كلمة المرور</label> <input class="form-control" placeholder="أدخل كلمة المرور" type="password" name="password" required>
-													</div>
-													<button type="submit" class="btn btn-main-primary btn-block">تسجيل الدخول</button> <!-- Changed to type="submit" -->
-												</form>
+
+<form action="{{ route('signin') }}" method="POST"> <!-- Changed action to use route -->
+    @csrf <!-- CSRF token for security -->
+    <div class="form-group">
+        <label>اسم المستخدم</label>
+        <input class="form-control" placeholder="أدخل اسم المستخدم" type="text" name="username" required>
+    </div>
+    <div class="form-group">
+        <label>رقم الهاتف</label>
+        <input class="form-control" placeholder="أدخل رقم الهاتف" type="text" name="telephone" required>
+    </div>
+    <div class="form-group">
+        <label>كلمة المرور</label>
+        <input class="form-control" placeholder="أدخل كلمة المرور" type="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-main-primary btn-block">تسجيل الدخول</button>
+</form>
 												<!-- Removed "Forgot password?" and "Don't have an account? Create an Account" texts -->
 											</div>
 										</div>
